@@ -1,8 +1,13 @@
 # coding: utf-8
 import psycopg2
+import log
 
 # execsql by sql
 def execsql(database, user, password, host, port, sql, result):
+    log.log("info", "database", database)
+    log.log("info", "user", user)
+    log.log("info", "host", host)
+    log.log("info", "sql", sql)
     conn = psycopg2.connect(database=database, user=user, password=password, host=host, port=port)
     conn.autocommit = True
     cursor = conn.cursor()

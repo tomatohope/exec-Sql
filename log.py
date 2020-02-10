@@ -30,12 +30,12 @@ fileHandler.setFormatter(formatter)
 logger.addHandler(consoleHandler)
 logger.addHandler(fileHandler)
 
-def log(level, info):
+def log(level, key, info):
     if level == 'debug':
-        logger.debug(info)
+        logger.debug(key + " - " + info)
     elif level == 'info':
-        logger.info(info)
+        logger.info(key + " - " + info)
     elif level == 'warn':
-        logger.warning(info)
+        logger.warning(key + " - " + info)
     else:
-        logger.error(info)
+        logger.error(key + " - " + info)
