@@ -1,0 +1,9 @@
+# file dir
+cp -r connectSqlModule/ /usr/lib/python2.7/site-packages/
+
+#use
+import connectSqlModule from execsql
+
+#module psycopg2 install
+pip list | grep psycopg2-binary
+pip install  psycopg2-binary
