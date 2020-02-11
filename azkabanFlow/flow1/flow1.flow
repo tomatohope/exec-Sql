@@ -1,0 +1,13 @@
+nodes:
+  - name: jobB
+    type: command
+    # jobC depends on jobA
+    dependsOn:
+      - jobA
+    config:
+      command: pwd
+
+  - name: jobA
+    type: command
+    config:
+      command: python /tmp/OperatePgsql.py "${database}" "${user}" "${password}" "${host}" "${port}" "${sqlfile}"
