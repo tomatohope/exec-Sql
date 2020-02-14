@@ -1,6 +1,6 @@
 # coding: utf-8
 import psycopg2
-import log
+from connectPgsql import log
 
 # execsql by sql
 def execsql(database, user, password, host, port, sql, result):
