@@ -11,7 +11,7 @@ for i in range(31, 61):
     print("i: ", i)
 
     # # createProject
-    # createProject = str("curl -k -X POST --data \"session.id="）+ str(sessionId) + str("&name=aaaa  ") + str(i) + str("&description=test\" http://192.168.43.63:8081/manager?action=create")
+    # createProject = str("curl -k -X POST --data \"session.id="）+ str(sessionId) + str("&name=aaaa") + str(i) + str("&description=test\" http://192.168.43.63:8081/manager?action=create")
     # print("createProjectCmd: ", createProject)
     # os.system(createProject)
     #
