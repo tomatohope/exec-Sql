@@ -1,8 +1,11 @@
 # file dir
-cp -r connectSqlModule/ /usr/lib/python2.7/site-packages/
+vim connectSql/log.py
+home='' #指定log目录
+
+cp -r connectSql/ /usr/lib/python2.7/site-packages/
 
 #use
-import connectSqlModule from execsql
+import connectSql from execsql
 
 #module psycopg2 install
 pip list | grep psycopg2-binary
