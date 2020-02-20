@@ -2,8 +2,9 @@
 import logging
 from logging import handlers
 
-airflow_home = '/root/airflow'
-filename = airflow_home + "/logs/log.log"
+#指定log目录
+home = '/../'
+filename = home + "/logs/log.log"
 
 logger = logging.getLogger()
 logger.setLevel(logging.DEBUG)
