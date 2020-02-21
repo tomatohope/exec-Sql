@@ -1,7 +1,10 @@
 prepare:
 
-1、cp -r connectMysql /usr/lib/python2.7/site-packages/
-2、yum -y install python-devel mysql-devel  &&  pip install MySQL-python
+1、vim connectSql/log.py
+home='' #指定log目录
+
+2、cp -r connectMysql /usr/lib/python2.7/site-packages/
+3、yum -y install python-devel mysql-devel  &&  pip install MySQL-python
 
 
 example:
@@ -9,5 +12,4 @@ example:
 # -*- coding: UTF-8 -*-
 from connectMysql import execsql
 
-results=execsql.execsql('192.168.43.225', 'root', '123456', 'azkaban', 'SELECT * from projects', '1')
-print("results: ",results)
+execsql.execsql('192.168.43.225', 'root', '123456', 'azkaban', 'SELECT * from projects', '0')
