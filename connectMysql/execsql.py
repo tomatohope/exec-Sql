@@ -21,5 +21,5 @@ def execsql(host, user, passwd, database, sql, result):
 def execsqlfile(host, user, passwd, database, sqlfile, result):
     with open(sqlfile, 'r') as f:
         sql = f.read()
-    results = execsql(host, port, user, passwd, database, sql, result)
+    results = execsql(host, user, passwd, database, sql, result)
     return results
