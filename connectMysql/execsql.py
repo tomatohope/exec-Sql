@@ -1,7 +1,6 @@
 # -*- coding: UTF-8 -*-
 import MySQLdb
 from connectMysql import log
-import json
 
 # execsql by sql
 def execsql(host, user, passwd, database, sql, result, dict):
@@ -9,7 +8,7 @@ def execsql(host, user, passwd, database, sql, result, dict):
     log.log("info", "user", user)
     log.log("info", "host", host)
 
-    dic = json.loads(dict)
+    dic = eval(dict)
     for key in dic:
         sql = sql.replace(key, dic[key])
 

@@ -1,7 +1,6 @@
 # coding: utf-8
 import psycopg2
 from connectPgsql import log
-import json
 
 # execsql by sql
 def execsql(database, user, password, host, port, sql, result, dict):
@@ -9,7 +8,7 @@ def execsql(database, user, password, host, port, sql, result, dict):
     log.log("info", "user", user)
     log.log("info", "host", host)
 
-    dic = json.loads(dict)
+    dic = eval(dict)
     for key in dic:
         sql = sql.replace(key, dic[key])
 
