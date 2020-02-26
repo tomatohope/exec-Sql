@@ -1,12 +1,18 @@
 # -*- coding: UTF-8 -*-
 import MySQLdb
 from connectMysql import log
+import json
 
 # execsql by sql
-def execsql(host, user, passwd, database, sql, result):
+def execsql(host, user, passwd, database, sql, result, dict):
     log.log("info", "database", database)
     log.log("info", "user", user)
     log.log("info", "host", host)
+
+    dic = json.loads(dict)
+    for key in dic:
+        sql = sql.replace(key, dic[key])
+
     log.log("info", "sql", sql)
     db = MySQLdb.connect(host=host, port=3306, user=user, passwd=passwd, db=database)
     cursor = db.cursor()
@@ -18,8 +24,8 @@ def execsql(host, user, passwd, database, sql, result):
     return results
 
 # execsql by sqlfile
-def execsqlfile(host, user, passwd, database, sqlfile, result):
+def execsqlfile(host, user, passwd, database, sqlfile, result, dict):
     with open(sqlfile, 'r') as f:
         sql = f.read()
-    results = execsql(host, user, passwd, database, sql, result)
+    results = execsql(host, user, passwd, database, sql, result, dict)
     return results
