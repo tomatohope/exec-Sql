@@ -1,0 +1,38 @@
+"""
+给analystic db posql 数据库 的某个库授权：
+权限是： 该用户具有操作某个库下的表的所有权限
+步骤如下： 步骤1 和 步骤2需要手动 连接数据库 执行； 
+           步骤3是直接用脚本执行
+           [] 中括号内是相关变量
+"""
+
+
+1#create a user
+CREATE ROLE [username] LOGIN PASSWORD '[usernamepassword]';
+
+GRANT all ON DATABASE [database] TO  [username];  
+GRANT all ON SCHEMA [schemaname] TO  [username]; 
+GRANT all ON ALL TABLES IN SCHEMA [schemaname] TO [username];
+
+
+2# update owner for [username]
+alter database [database] owner TO [username];
+alter SCHEMA [schemaname] owner TO [username];
+
+
+3#用脚本更改所有已有表的owner权限
+python updatePgsqlOwner.py '[database]' '[superuser]' '[superpassword]' '[host]' '[port]' '[schemaname]' '[username]'
+
+    #如果报错：可能需要安装模块 psycopg2-binary
+               检查是否存在该模块： pip list | grep psycopg2-binary
+               安装       该模块： pip install  psycopg2-binary
+			   
+
+
+"""
+当其他用户在 该库该shema下 创建新表时，需要执行以下步骤为 用户 [username] 恢复权限
+"""			  
+
+GRANT all ON ALL TABLES IN SCHEMA [schemaname] TO [username];
+
+python updatePgsqlOwner.py '[database]' '[superuser]' '[superpassword]' '[host]' '[port]' '[schemaname]' '[username]'
