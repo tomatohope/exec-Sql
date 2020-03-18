@@ -33,22 +33,16 @@ def pgsql_optimize(database, superuser, superpassword, host, port, schemaname, s
     sta_time = datetime.datetime.now()
     for i in range(len(tables)):
         sql = modulesql + tables[i][0]
-        print("sql       : ", sql)
         start_time = datetime.datetime.now()
-        execsql(database, superuser, superpassword, host, port, sql, 0)
+        #execsql(database, superuser, superpassword, host, port, sql, 0)
         end_time = datetime.datetime.now()
         token_time = (end_time - start_time).total_seconds()
-        print("start time: ", start_time.replace(microsecond=0), "sqlnum", i, sql)
-        print("token time: ", token_time, "s.", "         sqlnum", i, sql)
-        print("end   time: ", end_time.replace(microsecond=0), "sqlnum", i, sql)
-        print("\n")
+        print("action: ", sql, " token: ", token_time, "s", " start_time: ", start_time.replace(microsecond=0), " end_time: ", end_time.replace(microsecond=0))
 
     end_time = datetime.datetime.now()
     duration_time = (end_time - sta_time).total_seconds()
-    print("action    :", modulesql, "*")
-    print("token_time:", duration_time, "s")
-    print("start_time:", sta_time.replace(microsecond=0))
-    print("end_time  :", end_time.replace(microsecond=0), "\n")
+    print("\n")
+    print("action: ", modulesql, "*", " token: ", duration_time, "s", " start_time: ", sta_time.replace(microsecond=0), " end_time: ", end_time.replace(microsecond=0))
 
 ############################################
 database = sys.argv[1]
@@ -67,7 +61,4 @@ pgsql_optimize(database, superuser, superpassword, host, port, schemaname, "anal
 
 end_time = datetime.datetime.now()
 duration_time = (end_time - sta_time).total_seconds()
-print("action    : TotalexecTime")
-print("token_time:", duration_time, "s")
-print("start_time:", sta_time.replace(microsecond=0))
-print("end_time  :", end_time.replace(microsecond=0))
+print("action: ", "vacuum [tablename] && analyze [tablename]", " token: ", duration_time, "s", " start_time: ", sta_time.replace(microsecond=0), " end_time: ", end_time.replace(microsecond=0))

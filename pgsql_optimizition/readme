@@ -4,6 +4,7 @@
 
 步骤如下：  执行 脚本 pgsql_vacuum_analyze_table.py
            [] 中括号内是相关变量
+           输出日志格式： "action: analytze dev_jing_dw.jing_omni_user_33  token :0.4s, start_time:xxx, end_time:yyy"
 """
 
 python pgsql_vacuum_analyze_table.py '[database]' '[superuser]' '[superpassword]' '[host]' '[port]' '[schemaname]'
