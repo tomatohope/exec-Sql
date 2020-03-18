@@ -1,0 +1,13 @@
+"""
+优化 analystic db posql 某个数据库下的 所有表空间
+优化 analystic db posql 某个数据库下的 所有表执行代价
+
+步骤如下：  执行 脚本 pgsql_vacuum_analyze_table.py
+           [] 中括号内是相关变量
+"""
+
+python pgsql_vacuum_analyze_table.py '[database]' '[superuser]' '[superpassword]' '[host]' '[port]' '[schemaname]'
+
+    #如果报错：可能需要安装模块 psycopg2-binary
+               检查是否存在该模块： pip list | grep psycopg2-binary
+               安装       该模块： pip install  psycopg2-binary
